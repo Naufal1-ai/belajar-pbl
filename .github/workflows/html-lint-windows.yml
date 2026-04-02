@@ -1,0 +1,16 @@
+name: cek kode html
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  lint:
+    runs-on: windows-latest
+    steps:
+      - name: checkout Repository
+        uses: action/checkout@v4
+      - name: install HTMlHint
+        run: npm install -g gtmlhint
+      - name: Periksa HTML
+        run: htmlhint "**/*.html"
